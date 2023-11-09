@@ -1,0 +1,8 @@
+{
+  "//": "Default tsconfig file, intended for typechecking only",
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "exclude": ["./extensions-2021.json"],
+  "references": [{ "path": "./scripts" }]
+}
