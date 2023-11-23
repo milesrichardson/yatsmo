@@ -3,6 +3,9 @@
   "extends": "./tsconfig.base.json",
   "files": [],
   "include": [],
-  "exclude": ["./extensions-2021.json"],
-  "references": [{ "path": "./scripts" }]
+  "exclude": [],
+  "references": [
+    { "path": "./scripts" },
+    { "path": "./packages/fe-vanilla-ts" }
+  ]
 }
