@@ -6,6 +6,7 @@
   "exclude": [],
   "references": [
     { "path": "./scripts" },
+    { "path": "./packages/fe-react-ts" },
     { "path": "./packages/fe-vanilla-ts" }
   ]
 }
