@@ -2,13 +2,16 @@
   "name": "crxmon",
   "packageManager": "yarn@4.0.1",
   "workspaces": [
+    "packages/*",
     "scripts"
   ],
   "devDependencies": {
     "@types/node": "^20.9.0",
     "jsdom": "22.1.0",
     "prettier": "3.0.3",
+    "rimraf": "5.0.5",
     "typescript": "5.2.2",
+    "vite": "5.0.2",
     "vitest": "0.34.6"
   },
   "scripts": {
@@ -17,9 +20,13 @@
     "zx": "$(yarn zx-bin-esno) $(yarn zx-bin-zx)",
     "zx-bin-esno": "yarn workspace scripts bin esno",
     "zx-bin-zx": "yarn workspace scripts bin zx",
+    "clean": "yarn rimraf dist ; yarn rimraf packages/*/build/*",
     "format": "yarn run format.base --write --list-different .",
     "format.check": "yarn run format.base --check . || { yarn run format.warn ; }",
     "format.base": "yarn prettier --config .prettierrc --ignore-path .prettierignore --ignore-unknown",
     "format.warn": "echo ; echo \"Formatting issues found. To apply changes, run yarn format\" ; exit 1 ;"
+  },
+  "dependencies": {
+    "@yarnpkg/types": "4.0.0"
   }
 }
