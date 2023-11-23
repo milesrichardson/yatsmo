@@ -20,3 +20,10 @@ try running the hello world script
 ```
 yarn zx scripts/print-cwd.ts
 ```
+
+prechecks
+
+```
+yarn format.check
+yarn constraints
+```

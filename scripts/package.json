@@ -6,8 +6,8 @@
     "zx": "esno --no-cache $(yarn bin zx)"
   },
   "devDependencies": {
-    "@types/minimist": "^1",
-    "esno": "0.17.0"
+    "@types/minimist": "1.2.5",
+    "esno": "4.0.0"
   },
   "dependencies": {
     "minimist": "1.2.8",
