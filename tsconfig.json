@@ -2,7 +2,7 @@
   "//": "Default tsconfig file, intended for typechecking only",
   "extends": "./tsconfig.base.json",
   "files": [],
-  "include": [],
+  "include": ["yarn.config.cjs"],
   "exclude": [],
   "references": [
     { "path": "./scripts" },
