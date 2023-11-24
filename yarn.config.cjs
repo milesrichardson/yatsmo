@@ -34,9 +34,11 @@ Ok, trying to run even without setting DISABLE_V8_COMPILE_CACHE=1 ...
   }
 })();
 
-/*** @typedef { import('@yarnpkg/types').Yarn.Config } YarnConfig */
-/*** @typedef { import('@yarnpkg/types').defineConfig } DefineConfig */
-/*** @type { { defineConfig: DefineConfig }} _ */
+/*** @typedef { import('@yarnpkg/types').Yarn.Constraints.Context } Context */
+/*** @typedef { import('@yarnpkg/types').Yarn.Constraints.Dependency } Dependency */
+/*** @typedef { import('@yarnpkg/types').Yarn.Constraints.Context } Dependency */
+/*** @typedef { import('@yarnpkg/types').Yarn.Config["constraints"] } EnforcementFunction */
+/*** @typedef { "exec" | "file" | "git" | "link" | "npm" | "patch" | "portal" | "workspace" } Protocol */
 const { defineConfig } = require("@yarnpkg/types");
 
 // is-exact-version is an ESM module, so we need to import it dynamically,
@@ -73,7 +75,7 @@ const loadSafeIsExactVersion = async () => {
 };
 
 /**
- * @type YarnConfig["constraints"]
+ * @type { EnforcementFunction }
  */
 async function enforceExactReferencesNoSemverRangesAllowed({ Yarn }) {
   const isExactVersion = await loadSafeIsExactVersion();
@@ -117,11 +119,7 @@ async function enforceExactReferencesNoSemverRangesAllowed({ Yarn }) {
   return Promise.resolve();
 }
 
-/*** @typedef { Parameters<YarnConfig["constraints"]>[0]["Yarn"] } YarnContext */
-/*** @typedef {ReturnType<YarnContext["dependencies"]>[number]} Dependency */
-
-/*** @typedef { "exec" | "file" | "git" | "link" | "npm" | "patch" | "portal" | "workspace" } Dependency */
-/*** @type { (dependency: Dependency) => string } */
+/*** @type { (dependency: Dependency) => Protocol } */
 const guessProtocol = (dependency) => {
   if (dependency.range.startsWith("exec:")) {
     return "exec";
@@ -160,7 +158,7 @@ const getNpmRangeOrNull = (dependency) => {
  * This rule will enforce that a workspace MUST depend on the same version of
  * a dependency as the one used by the other workspaces.
  *
- * @type YarnConfig["constraints"]
+ * @type { EnforcementFunction }
  */
 function enforceConsistentDependenciesAcrossTheProject({ Yarn }) {
   for (const dependency of Yarn.dependencies()) {
