@@ -1,6 +1,19 @@
-# JS/TypeScript Frontend Playground
+# YET ANOTHER TYPESCRIPT MONOREPO
 
-This was generated with `copier`.
+This was generated with `copier`. (it actually wasn't, but eventually that's the
+intent. I just wanna push it to GitHub in the meantime.)
+
+It's just a bunch of Vite templates for the most part. But they're my Vite
+templates. I mean not literally, I didn't make the templates. But I installed
+them. And that's something.
+
+Eventually I'm gonna turn this into a GitHub template for creating new frontend
+playground projects, and then I'm not gonna touch it for 10 months, and then I'm
+gonna have a project idea so I'm gonna clone it but instead of doing the project
+I'll get distracted by upgrading everything in this repo.
+
+on that note, the upgrade command is `yarn up -E -i '*'`, you know - assuming
+you're a really handsome guy reading this in the future...
 
 This repo uses Node v20 and Yarn v4.
 
